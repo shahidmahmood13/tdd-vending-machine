@@ -38,6 +38,9 @@ module.exports = class Machine {
         const selectedItem = this.inventory.filter(inventoryItem => inventoryItem.code === code);
         if (selectedItem[0].quantity < 1) {
             return 'The item you selected is unavailable';
+        } else if (selectedItem[0].price > this.totalDeposit) {
+            const diff = selectedItem[0].price - this.totalDeposit;
+            return 'Your deposit is insufficient.  Please add Rs ' + diff + ' for this item'
         }
     }
 };

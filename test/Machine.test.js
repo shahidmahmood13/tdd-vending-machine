@@ -50,4 +50,17 @@ describe('the vending machine', () => {
         // assert
         expect(actual).to.equal(expected);
     });
+
+    it('should notify me when my deposit is insufficient', () => {
+        // setup
+        const machine = new Machine();
+        const expected = 'Your deposit is insufficient.  Please add Rs 20 for this item';
+        machine.totalDeposit = 50;
+
+        // exercise
+        const actual = machine.selectItem(3);
+
+        // assert
+        expect(actual).to.equal(expected);
+    });
 });
