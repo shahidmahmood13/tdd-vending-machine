@@ -26,6 +26,7 @@ As a customer, I want to know how much money I have deposited, so that I know wh
 - Given I am using the vending machine, 
 - when I insert money, 
 - then I see the total I have deposited on a screen. ('You have deposited Rs 100')
+10, 20, 50, 100, 500
 
 As a customer, I want to see a message if my item is unavailable, so that I can make another choice.
 - Given I am using the vending machine, 
