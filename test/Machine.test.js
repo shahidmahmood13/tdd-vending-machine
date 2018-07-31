@@ -38,4 +38,16 @@ describe('the vending machine', () => {
         // assert
         expect(actual).to.equal(expected);
     });
+
+    it('should notify me when my selection is unavailable', () => {
+        // setup
+        const machine = new Machine();
+        const expected = 'The item you selected is unavailable';
+
+        // exercise
+        const actual = machine.selectItem(2);
+
+        // assert
+        expect(actual).to.equal(expected);
+    });
 });

@@ -32,6 +32,7 @@ As a customer, I want to see a message if my item is unavailable, so that I can 
 - Given I am using the vending machine, 
 - when I choose an item that is unavailable, 
 - then I see a message that tells me to make a different choice.
+selectItem(itemName) returns 'That item is unavailable'
 
 As a customer, I want to see a message if my deposit is insufficient, so that I know to add more money.
 - Given I have made a choice, 
