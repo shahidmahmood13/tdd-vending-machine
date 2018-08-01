@@ -8,7 +8,7 @@ describe('the vending machine', () => {
         const expected = [{'crisps': 100}, {'chocolate': 350}, {'mints': 70}];
 
         // exercise
-        const actual = machine.checkInventory();
+        const actual = machine.getMenu();
 
         // assert
         expect(actual).to.deep.equal(expected);
@@ -88,5 +88,25 @@ describe('the vending machine', () => {
 
         // assert
         expect(actual).to.deep.equal(expected);
+    });
+
+    it('should display a message if correct change is not available', () => {
+        // setup
+        const machine = new Machine();
+        machine.totalDeposit = 100;
+        const expected = 'Cannot return proper change.  Please choose another item or cancel the transaction';
+        machine.bank = {
+            500: 10,
+            100: 10,
+            50: 10,
+            20: 10,
+            10: 0
+        };
+
+        // exercise
+        const actual = machine.selectItem(3);
+
+        // assert
+        expect(actual).to.equal(expected);
     });
 });

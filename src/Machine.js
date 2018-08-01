@@ -10,6 +10,13 @@ module.exports = class Machine {
         this.stockInventory(crisps, 3);
         this.stockInventory(choc, 0);
         this.stockInventory(mints, 1);
+        this.bank = {
+            500: 10,
+            100: 10,
+            50: 10,
+            20: 10,
+            10: 10
+        }
     }
 
     stockInventory(item, quantity) {
@@ -21,7 +28,7 @@ module.exports = class Machine {
         })
     }
 
-    checkInventory() {
+    getMenu() {
         return this.inventory.map(inventoryItem => {
             let newItemObj = {};
             newItemObj[inventoryItem.item] = inventoryItem.price;
@@ -35,16 +42,22 @@ module.exports = class Machine {
     }
 
     makeChange(item) {
-        const denominations = [500, 100, 50, 20, 10];
         let overpayment = this.totalDeposit - item.price;
         const change = [];
-        denominations.map((denomination) => {
-            let numOfBills = Math.floor(overpayment / denomination);
+        const denominations = Object.keys(this.bank);
+        const denom = denominations.map((denomination) => parseInt(denomination));
+        const sorted = denom.sort((a, b) => b - a);
+        for (const denomination of sorted) {
+            const billsAvailable = this.bank[denomination];
+            let desiredBills = Math.floor(overpayment / denomination);
+            let numOfBills = (billsAvailable < desiredBills) ? billsAvailable : desiredBills;
             for (let i = 0; i < numOfBills; i++) {
                 change.push(denomination);
                 overpayment = overpayment - denomination;
+                this.bank[denomination] = this.bank[denomination] - 1;
             }
-        });
+        }
+        if (overpayment > 0) return undefined;
         return change;
     }
 
@@ -57,6 +70,7 @@ module.exports = class Machine {
             return 'Your deposit is insufficient.  Please add Rs ' + diff + ' for this item'
         } else {
             const change = this.makeChange(selectedItem[0]);
+            if (!change) return 'Cannot return proper change.  Please choose another item or cancel the transaction';
             return {item: selectedItem[0].item, change: change};
         }
     }
