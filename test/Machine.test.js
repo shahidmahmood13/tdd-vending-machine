@@ -8,7 +8,7 @@ describe('the vending machine', () => {
         const expected = [{'crisps': 100}, {'chocolate': 350}, {'mints': 70}];
 
         // exercise
-        const actual = machine.getMenu();
+        const actual = machine.seeSelections();
 
         // assert
         expect(actual).to.deep.equal(expected);

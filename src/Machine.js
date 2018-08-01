@@ -28,7 +28,7 @@ module.exports = class Machine {
         })
     }
 
-    getMenu() {
+    seeSelections() {
         return this.inventory.map(inventoryItem => {
             let newItemObj = {};
             newItemObj[inventoryItem.item] = inventoryItem.price;
