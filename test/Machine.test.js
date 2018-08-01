@@ -76,4 +76,17 @@ describe('the vending machine', () => {
         // assert
         expect(actual).to.deep.equal(expected);
     });
+
+    it('should return money when cancel btn is pressed', () => {
+        // setup
+        const machine = new Machine();
+        machine.totalDeposit = 100;
+        const expected = {change: [100]};
+
+        // exercise
+        const actual = machine.cancel();
+
+        // assert
+        expect(actual).to.deep.equal(expected);
+    });
 });

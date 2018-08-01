@@ -60,4 +60,9 @@ module.exports = class Machine {
             return {item: selectedItem[0].item, change: change};
         }
     }
+
+    cancel() {
+        const change = this.makeChange({price: 0});
+        return {change: change};
+    }
 };
