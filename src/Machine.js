@@ -44,13 +44,13 @@ module.exports = class Machine {
     makeChange(item) {
         let overpayment = this.totalDeposit - item.price;
         const change = [];
-        const denominations = Object.keys(this.bank);
-        const denom = denominations.map((denomination) => parseInt(denomination));
-        const sorted = denom.sort((a, b) => b - a);
-        for (const denomination of sorted) {
+        const denominations = Object.keys(this.bank)
+            .map((denomination) => parseInt(denomination))
+            .sort((a, b) => b - a);
+        for (const denomination of denominations) {
             const billsAvailable = this.bank[denomination];
-            let desiredBills = Math.floor(overpayment / denomination);
-            let numOfBills = (billsAvailable < desiredBills) ? billsAvailable : desiredBills;
+            const desiredBills = Math.floor(overpayment / denomination);
+            const numOfBills = (billsAvailable < desiredBills) ? billsAvailable : desiredBills;
             for (let i = 0; i < numOfBills; i++) {
                 change.push(denomination);
                 overpayment = overpayment - denomination;
@@ -62,16 +62,17 @@ module.exports = class Machine {
     }
 
     selectItem(code) {
-        const selectedItem = this.inventory.filter(inventoryItem => inventoryItem.code === code);
-        if (selectedItem[0].quantity < 1) {
+        const selectedItem = this.inventory
+            .filter(inventoryItem => inventoryItem.code === code).pop();
+        if (selectedItem.quantity < 1) {
             return 'The item you selected is unavailable';
-        } else if (selectedItem[0].price > this.totalDeposit) {
-            const diff = selectedItem[0].price - this.totalDeposit;
+        } else if (selectedItem.price > this.totalDeposit) {
+            const diff = selectedItem.price - this.totalDeposit;
             return 'Your deposit is insufficient.  Please add Rs ' + diff + ' for this item'
         } else {
-            const change = this.makeChange(selectedItem[0]);
+            const change = this.makeChange(selectedItem);
             if (!change) return 'Cannot return proper change.  Please choose another item or cancel the transaction';
-            return {item: selectedItem[0].item, change: change};
+            return {item: selectedItem.item, change: change};
         }
     }
 
