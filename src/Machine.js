@@ -34,6 +34,20 @@ module.exports = class Machine {
         return 'You have deposited Rs ' + this.totalDeposit;
     }
 
+    makeChange(item) {
+        const denominations = [500, 100, 50, 20, 10];
+        let overpayment = this.totalDeposit - item.price;
+        const change = [];
+        denominations.map((denomination) => {
+            let numOfBills = Math.floor(overpayment / denomination);
+            for (let i = 0; i < numOfBills; i++) {
+                change.push(denomination);
+                overpayment = overpayment - denomination;
+            }
+        });
+        return change;
+    }
+
     selectItem(code) {
         const selectedItem = this.inventory.filter(inventoryItem => inventoryItem.code === code);
         if (selectedItem[0].quantity < 1) {
@@ -41,6 +55,9 @@ module.exports = class Machine {
         } else if (selectedItem[0].price > this.totalDeposit) {
             const diff = selectedItem[0].price - this.totalDeposit;
             return 'Your deposit is insufficient.  Please add Rs ' + diff + ' for this item'
+        } else {
+            const change = this.makeChange(selectedItem[0]);
+            return {item: selectedItem[0].item, change: change};
         }
     }
 };

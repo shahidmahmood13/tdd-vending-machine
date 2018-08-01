@@ -28,6 +28,11 @@ As a customer, I want to know how much money I have deposited, so that I know wh
 - then I see the total I have deposited on a screen. ('You have deposited Rs 100')
 10, 20, 50, 100, 500
 
+As a customer, I want to add additional money, so that I can use the denominations I have to purchase an item.
+- Given I have deposited money in the vending machine,
+- when I deposit additional money,
+- then I see the new total on a screen.
+
 As a customer, I want to see a message if my item is unavailable, so that I can make another choice.
 - Given I am using the vending machine, 
 - when I choose an item that is unavailable, 

@@ -63,4 +63,17 @@ describe('the vending machine', () => {
         // assert
         expect(actual).to.equal(expected);
     });
+
+    it('should vend item and make change', () => {
+        // setup
+        const machine = new Machine();
+        machine.totalDeposit = 100;
+        const expected = {item: 'mints', change: [20, 10]};
+
+        // exercise
+        const actual = machine.selectItem(3);
+
+        // assert
+        expect(actual).to.deep.equal(expected);
+    });
 });
