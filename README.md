@@ -2,11 +2,11 @@
 
 ### Objectives:
 
-- Give students feedback regarding their pairing behaviors
-- Reinforce writing tests first
-- Reinforce writing good tests - transparent box, SEAT pattern
-- Reinforce the ‘refactor’ of red, green, refactor
-- Reinforce frequent commits with good messages
+- Give and receive feedback on pairing behaviors - see Pairing Rubric below
+- Practice writing tests first
+- Practice writing good tests - transparent box, SEAT pattern
+- Practice the ‘refactor’ of red, green, refactor
+- Practice frequent commits with good messages
 
 
 ### Setup
@@ -30,7 +30,7 @@ As a customer, I want to see that the vending machine has items, so that I can p
 - when I look at it,
 - then I see items inside that I can buy
 - `seeSelections()` returns an array of objects with item and price:
-[{'crisps': 'Rs 100'}, {'chocolate': 'Rs 350'}, {'mints': 'Rs 70'}]
+`[{'crisps': 'Rs 100'}, {'chocolate': 'Rs 350'}, {'mints': 'Rs 70'}]`
 
 As a customer, I want to know how much money I have deposited, so that I know what I can purchase.
 - Given I am using the vending machine, 
@@ -80,4 +80,8 @@ Methods:
 - `deposit(denomination)` => totalDeposit  
 - `selectItem(code)` => item + change || insufficient funds msg || insufficient change msg || item not available msg  
 - `cancel()` => totalDepositReturned
+
+
+### Pairing Rubric
+![Pairing Rubric](pairing_rubric.png)
 
