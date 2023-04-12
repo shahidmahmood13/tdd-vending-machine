@@ -7,7 +7,7 @@ describe("the vending machine", () => {
     const machine = new Machine();
     const expected = [{name: 'crisps',price: 100 },
      {name: 'chocolate' ,price:350 },
-      {name : 'mints', price:70 }];
+      {name : 'mints', price:500 }];
 
     // exercise
     const result = machine.seeSelections();
@@ -19,7 +19,7 @@ describe("the vending machine", () => {
 
 it("how mush Amout i deposit",()=>{
     // Setup
-    const machine= new Machine();
+    const machine = new Machine(500);
     const expected ="You have deposited Rs 500";
     const depositAmount = 500;
     // Act
@@ -29,6 +29,46 @@ it("how mush Amout i deposit",()=>{
 
 
 })
+
+it("Add more Amount",()=>{
+    const machine = new Machine();
+    const expected ="You have deposited Rs 600";
+const AddMoreAmount = 100;
+// actt
+const result = machine.deposit(AddMoreAmount);
+// Assert 
+expect(result).toBe(expected);
+
+})
+
+it("UNavaiable item", ()=>{
+
+const machine= new Machine();
+const expected= "The item you selected is unavailable"
+const itemName = "lays"
+const Amountdeposit=10;
+// Act
+const result = machine.selectItem(itemName,Amountdeposit)
+// Assert
+expect(result).toBe(expected);
+
+})
+
+it("Your deposit is insufficient . Add more amount",()=>{
+    const machine = new Machine();
+    const expected ="Your deposit is insufficient.  Please add Rs 400 for this item"
+    let itemName = 'mints';
+    let Amountdeposit=100;
+    const result = machine.selectItem(itemName, Amountdeposit);
+
+    expect(result).toBe(expected)
+
+})
+
+
+
+
+
 
 
 });
