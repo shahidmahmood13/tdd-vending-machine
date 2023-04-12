@@ -16,7 +16,7 @@ describe("the vending machine", () => {
     expect(result).toEqual(expected);
 
   });
-  
+
 it("how mush Amout i deposit",()=>{
     // Setup
     const machine= new Machine();
@@ -25,7 +25,7 @@ it("how mush Amout i deposit",()=>{
     // Act
     const result = machine.deposit(depositAmount);
     // Assert
-    expect(result).toEqual(expected);
+    expect(result).toBe(expected);
 
 
 })
