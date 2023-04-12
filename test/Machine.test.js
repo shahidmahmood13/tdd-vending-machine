@@ -1,16 +1,23 @@
-const Machine = require('../src/Machine');
+const Machine = require("../src/Machine");
 
-describe('the vending machine', () => {
-    it('should have items to purchase', () => {
-        // setup
-        const machine = new Machine();
-        const expected = [{'crisps': 100}, {'chocolate': 350}, {'mints': 70}];
+describe("the vending machine", () => {
 
-        // exercise
-        const actual = machine.seeSelections();
+  it("should have items to purchase", () => {
+    // setup
+    const machine = new Machine();
+    const expected = [{name: 'crisps',price: 100 },
+     {name: 'chocolate' ,price:350 },
+      {name : 'mints', price:70 }];
 
-        // assert
-        expect(true).toEqual(true);
-    });
+    // exercise
+    const result = machine.seeSelections();
+
+    // assert
+    expect(result).toEqual(expected);
+
+
+  });
+
+
 
 });
