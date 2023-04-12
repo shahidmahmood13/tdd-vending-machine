@@ -15,9 +15,20 @@ describe("the vending machine", () => {
     // assert
     expect(result).toEqual(expected);
 
-
   });
+  
+it("how mush Amout i deposit",()=>{
+    // Setup
+    const machine= new Machine();
+    const expected ="You have deposited Rs 500";
+    const depositAmount = 500;
+    // Act
+    const result = machine.deposit(depositAmount);
+    // Assert
+    expect(result).toEqual(expected);
 
+
+})
 
 
 });

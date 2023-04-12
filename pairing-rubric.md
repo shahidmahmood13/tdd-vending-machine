@@ -1,8 +1,8 @@
 # Pairing Rubric
 
-Your Name: _________________________________________
+Your Name: ___Shahid Mahmood______________________________________
 
-Pair's Name: ________________________________________
+Pair's Name: ____Sarah patel ____________________________________
 
 | Pairing Behavior | Needs Improvement | In Between | Desirable |
 | --- | --- | --- | --- | 
