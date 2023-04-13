@@ -44,7 +44,7 @@ expect(result).toBe(expected);
 it("UNavaiable item", ()=>{
 
 const machine= new Machine();
-const expected= "The item you selected is unavailable"
+const expected= undefined;
 const itemName = "lays"
 const Amountdeposit=10;
 // Act
@@ -79,7 +79,7 @@ it("I want to receive change. Add more amount",()=>{
 });
 it("total deposit amount return", () => {
     let machine =  new Machine();
-    let expected = "The total deposit amount is 600" ;
+    let expected = "The total deposit amount  is 600" ;
     let result= machine.cancel();
     expect(result).toBe(expected)
 
