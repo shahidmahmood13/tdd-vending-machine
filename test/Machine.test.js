@@ -44,6 +44,7 @@ expect(result).toBe(expected);
 it("UNavaiable item", ()=>{
 
 const machine= new Machine();
+const expact="The item you selected is unavailable" 
 const expected= undefined;
 const itemName = "lays"
 const Amountdeposit=10;
