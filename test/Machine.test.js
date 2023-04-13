@@ -54,6 +54,8 @@ expect(result).toBe(expected);
 
 })
 
+
+
 it("Your deposit is insufficient . Add more amount",()=>{
     const machine = new Machine();
     const expected ="Your deposit is insufficient.  Please add Rs 400 for this item"
@@ -65,6 +67,23 @@ it("Your deposit is insufficient . Add more amount",()=>{
 
 })
 
+it("I want to receive change. Add more amount",()=>{
+    const machine = new Machine();
+    const expected ="chocolate change:[400,50]"
+    let itemName = 'chocolate';
+    let Amountdeposit=400;
+    const result = machine.selectItem(itemName, Amountdeposit);
+
+    expect(result).toBe(expected)
+
+});
+it("total deposit amount return", () => {
+    let machine =  new Machine();
+    let expected = "The total deposit amount is 600" ;
+    let result= machine.cancel();
+    expect(result).toBe(expected)
+
+})
 
 
 
