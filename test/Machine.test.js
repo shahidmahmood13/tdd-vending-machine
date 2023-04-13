@@ -85,16 +85,17 @@ it("total deposit amount return", () => {
 
 })
 
-it("Add more AmountCannot return proper change.",()=>{
-    const machine = new Machine();
-    const expected ="You have deposited Rs 500";
 
-// actt
-const result = machine.cancel();
-// Assert 
-expect(result).toBe(expected);
-
-})
+    it("Add more AmountCannot return proper change",()=>{
+        const machine = new Machine();
+        const expected ="Remining amount: 600 Rs. Cannot return proper change.  Please choose another item or cancel the transaction "
+         let itemName = "crisps";
+        let Amountdeposit=700;
+        const result = machine.selectItem(itemName, Amountdeposit);
+    
+        expect(result).toBe(expected)
+    
+    });
 
 
 

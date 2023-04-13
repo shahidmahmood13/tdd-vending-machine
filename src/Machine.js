@@ -30,6 +30,7 @@ module.exports = class Machine {
   //  4th 5th 6th test case /
 
   selectItem(itemName, Amountdeposit) {
+    let changeAmountArray=[10,20,50,500]
     let checkmark ;
     for (let i = 0; i < this.item.length; i++) {
 
@@ -43,7 +44,12 @@ module.exports = class Machine {
         else if(this.item[i].price<Amountdeposit){
             let change = Amountdeposit - this.item[i].price;
 
+          if(!changeAmountArray.includes(change) ) {
+            return`Remining amount: ${change} Rs. Cannot return proper change.  Please choose another item or cancel the transaction `
+          }
+          else{
         return `${this.item[i].name} change:[${Amountdeposit},${change}]`;
+          }
         }
         
         else {
@@ -51,10 +57,6 @@ module.exports = class Machine {
         }
 
     }
-
-    // if (checkmark == false) {
-    //   return "The item you selected is unavailable";
-    // }
   }
 };
 cancel(){
